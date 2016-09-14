@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ServiceStation.Models.Entity.Car>
+
+@{
+    ViewBag.Title = "LoadCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LoadCar</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddCar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vin)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @item.Date.ToString("MMMM dd, yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vin)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCar", new { id=item.Id }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Delete", "DeleteCar", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
